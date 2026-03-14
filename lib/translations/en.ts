@@ -203,6 +203,6 @@ export const en = {
   },
   footer: {
     description: 'Milazim Mustafa Law Office – Trustworthy and dignified, professional legal services.',
-    copyright: '© 2024 Milazim Mustafa. All rights reserved.',
+    copyright: '© 2026 Milazim Mustafa. All rights reserved.',
   },
 };

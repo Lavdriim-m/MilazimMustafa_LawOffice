@@ -203,6 +203,6 @@ export const sq = {
   },
   footer: {
     description: 'Studio Ligjore Milazim Mustafa – Besueshmëri dhe shërbime juridike dinjitoze dhe profesionale.',
-    copyright: '© 2024 Milazim Mustafa. Të gjitha të drejtat e rezervuara.',
+    copyright: '© 2026 Milazim Mustafa. Të gjitha të drejtat e rezervuara.',
   },
 };
