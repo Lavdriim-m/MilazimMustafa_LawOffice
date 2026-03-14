@@ -6,9 +6,14 @@ const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-serif',
+  display: 'swap'
 });
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans', });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Milazim Mustafa',
