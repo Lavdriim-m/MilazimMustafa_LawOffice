@@ -72,8 +72,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </div>
 
             <div className="order-1 lg:order-2">
-              <div className="relative aspect-[3/4] lg:aspect-square max-w-md mx-auto lg:max-w-none">
-                <div className="absolute inset-0 bg-gradient-to-tr from-teal-600/10 to-slate-600/10 -rotate-3" />
+              <div className="relative aspect-[3/4] max-w-md mx-auto lg:max-w-none">
+                <div className="absolute inset-0 bg-gradient-to-tr from-teal-700/40 to-slate-700/40 -rotate-3" />
                 <Image
                   src="/portrait.jpeg"
                   alt="Milazim Mustafa"
