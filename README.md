@@ -87,27 +87,6 @@ Examples:
 - About: `/sq/about`, `/mk/about`, `/en/about`
 - Biography: `/sq/biography`, `/mk/biography`, `/en/biography`
 
-## Translation Management
-
-### Albanian (sq) - COMPLETE ✓
-The Albanian translations are complete and use the exact copy provided in the PDF document.
-
-### Macedonian (mk) and English (en) - TODO
-Translation files are structured and ready for content. To add translations:
-
-1. Open `/lib/translations/mk.ts` for Macedonian or `/lib/translations/en.ts` for English
-2. Replace `[TODO: ...]` placeholders with professionally translated content
-3. Follow the structure of the Albanian translations in `/lib/translations/sq.ts`
-
-**Important**: Maintain the same structure and keep all object keys unchanged. Only translate the string values.
-
-### Translation File Locations
-
-- **Navigation & UI**: Look for `nav`, `hero`, `contact.form` keys
-- **Home Page**: `home` object
-- **Services Page**: `services` object with `sections` array
-- **About Page**: `about` object with `intro`, `philosophy`, and `why` sections
-- **Biography Page**: `biography` object with `highlights` array
 
 ## Contact Form Integration
 
@@ -292,10 +271,10 @@ contact: {
 
 For questions or support regarding this website:
 
-- **Email**: avokat@milazimmustafa.com
-- **Phone**: +389 70 384 017
+- **Email**: lavdrim.mustafi03@gmail.com
+- **Phone**: +389 71 760 068
 - **Website**: www.milazimmustafa.com
 
 ## License
 
-© 2024 Milazim Mustafa. All rights reserved.
+© 2026 Milazim Mustafa. All rights reserved.
