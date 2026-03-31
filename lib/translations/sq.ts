@@ -10,7 +10,7 @@ export const sq = {
   },
   hero: {
     title: 'Besueshmëri dhe shërbime juridike dinjitoze dhe profesionale',
-    subtitle: 'Me një trashëgimi mbi 20-vjeçare në tregun juridik të Maqedonisë së Veriut',
+    subtitle: 'Me një përvojë mbi 20-vjeçare në tregun juridik të Maqedonisë së Veriut',
     cta: {
       services: 'Shiko Shërbimet',
       contact: 'Kontakto',
@@ -19,7 +19,7 @@ export const sq = {
   home: {
     servicesPreview: {
       title: 'Shërbimet Tona',
-      description: 'Studio Ligjore Milazim Mustafa ofron asistencë juridike gjithëpërfshirëse, duke kombinuar përvojën e gjatë me një qasje moderne ndaj zgjidhjes së problemeve ligjore në Republikën e Maqedonisë së Veriut dhe më gjerë.',
+      description: 'Zyra e avokatisë Milazim Mustafa ofron asistencë juridike gjithëpërfshirëse, duke kombinuar përvojën e gjatë me një qasje moderne ndaj zgjidhjes së problemeve ligjore në Republikën e Maqedonisë së Veriut dhe më gjerë.',
     },
     aboutPreview: {
       title: 'Pse të zgjidhni zyrën e avokatisë Milazim Mustafa?',
@@ -34,26 +34,26 @@ export const sq = {
   },
   services: {
     title: 'Shërbimet Tona',
-    subtitle: 'Studio Ligjore Milazim Mustafa ofron asistencë juridike gjithëpërfshirëse, duke kombinuar përvojën e gjatë me një qasje moderne ndaj zgjidhjes së problemeve ligjore në Republikën e Maqedonisë së Veriut dhe më gjerë.',
+    subtitle: 'Zyra e avokatisë Milazim Mustafa ofron asistencë juridike gjithëpërfshirëse, duke kombinuar përvojën e gjatë me një qasje moderne ndaj zgjidhjes së problemeve ligjore në Republikën e Maqedonisë së Veriut dhe më gjerë.',
     sections: [
       {
         title: 'Përfaqësimi Gjyqësor dhe Administrativ',
         description: 'Ne ofrojmë mbrojtje profesionale të interesave tuaja në të gjitha instancat e sistemit gjyqësor:',
         items: [
           'Gjykatat e Shkallës së Parë dhe Gjykatat e Apelit.',
-          'Gjykata e Lartë dhe Gjykata Kushtetuese e RMV-së.',
+          'Gjykata Supreme dhe Gjykata Kushtetuese e RMV-së.',
           'Gjykata Evropiane për të Drejtat e Njeriut (Strazburg).',
           'Përfaqësim pranë Prokurorisë Publike dhe organeve të rendit (Polici).',
-          'Mbrojtje në procedurat administrative pranë organeve të shtetit dhe pushtetit lokal.',
+          'Mbrojtje në procedurat administrative pranë Gjykatës administrative, organeve të shtetit dhe pushtetit lokal.',
         ],
       },
       {
         title: 'E Drejta Civile dhe Litigjimi',
-        description: 'Trajtojmë mosmarrëveshjet civile me fokus në arritjen e zgjidhjeve efikase përmes negociatave, ndërmjetësimit ose rrugës gjyqësore:',
+        description: 'Trajtojmë kontestet civile me fokus në arritjen e zgjidhjeve efikase përmes negociatave, ndërmjetësimit (mediacionit) ose rrugës gjyqësore:',
         items: [
           'Pronësia: Konteste pronësore, mbrojtje e posedimit dhe shpronësimet.',
           'Dëmshpërblimet: Realizimi i dëmit material dhe jomaterial (aksidente, lëndime, etj.).',
-          'Kontratat: Hartimi i të gjitha llojeve të kontratave (tipike dhe atipike) në gjuhën shqipe, maqedonase, angleze dhe italiane.',
+          'Kontratat: Hartimi i të gjitha llojeve të kontratave (tipike dhe atipike) në gjuhën shqipe, maqedonase, angleze dhe turke.',
           'Trashëgimia: Procedurat e trashëgimisë ligjore dhe testamentare.',
         ],
       },
@@ -91,7 +91,7 @@ export const sq = {
         title: 'E Drejta Administrative dhe e Punës',
         description: '',
         items: [
-          'Konfliktet e Punës: Kontestet ndërmjet punëdhënësit dhe punëmarrësit, largimet nga puna, diskriminimi dhe mobingu.',
+          'Kontestet e Punës: Kontestet ndërmjet punëdhënësit dhe punëmarrësit, largimet nga puna, diskriminimi dhe mobingu.',
           'Statusi i Nëpunësve: Mbrojtja e të drejtave për të punësuarit në administratën publike.',
           'Lejet dhe Tenderët: Asistencë në procedurat e prokurimit publik, koncesioneve dhe legalizimit të ndërtimeve.',
         ],
@@ -114,7 +114,7 @@ export const sq = {
     subtitle: 'Shërbime profesionale, besueshmëri në çdo hap – Halli juaj, prioriteti ynë.',
     intro: {
       title: 'RRETH NESH',
-      content: 'Me një trashëgimi mbi 20-vjeçare në tregun juridik të Maqedonisë së Veriut, Zyra e Avokatisë Milazim Mustafa nuk është thjesht një shtëpi e drejtësisë, por një partner strategjik për sfidat tuaja ligjore. Ne gërshtetojmë përfaqësimin dinjitoz me zgjidhjet inovative, duke u përshtatur me dinamikat e kohës pa sakrifikuar kurrë etikën.',
+      content: 'Me një përvojë mbi 20-vjeçare në tregun juridik të Maqedonisë së Veriut, Zyra e Avokatisë Milazim Mustafa nuk është thjesht një shtëpi e drejtësisë, por një partner strategjik për sfidat tuaja ligjore. Ne gërshtetojmë përfaqësimin dinjitoz me zgjidhjet inovative, duke u përshtatur me dinamikat e kohës pa sakrifikuar kurrë parimet etike.',
     },
     philosophy: {
       title: 'Filozofia Jonë',
@@ -169,8 +169,8 @@ export const sq = {
         description: 'Ai ka qenë bartës i dhjetëra projekteve në programe të ndryshme ndërkombëtare, ndërtë cilat veçohen: "Forcimi i kapaciteteve për luftë efikase kundër krimit të organizuar dhe korrupsionit", "Rritja e efikasitetit, përgjegjshmërisë dhe transparencës së Këshillit Gjyqësor të Maqedonisë së Veriut", Mbështetja e BE-së për Sundimin e Ligjit (EU Support for Rule of Law) e kështu me radhë.',
       },
       {
-        title: 'Ndërmjetësim',
-        description: 'Që nga viti 2016 ai është edhe ndërmjetës (mediator) i certifikuar. Gjatë kësaj periudhe, ai ka ndërmjetësuar me sukses mbi 300 marrëveshje mes palëve të ndryshme në vend.',
+        title: 'Ndërmjetësim (Mediacion)',
+        description: 'Që nga viti 2017 ai është edhe ndërmjetës (mediator) i certifikuar. Gjatë kësaj periudhe, ai ka ndërmjetësuar me sukses mbi 300 marrëveshje mes palëve të ndryshme në vend.',
       },
     ],
   },

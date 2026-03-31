@@ -170,7 +170,7 @@ export const en = {
       },
       {
         title: 'Mediation',
-        description: 'Since 2016, he has also been a certified mediator. During this period, he has successfully mediated more than 300 agreements between different parties in the country.',
+        description: 'Since 2017, he has also been a certified mediator. During this period, he has successfully mediated more than 300 agreements between different parties in the country.',
       },
     ],
   },

@@ -190,9 +190,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     </span>
                   </div>
                   <p className="text-slate-600 text-sm">
-                    {locale === 'sq' ? 'Që nga viti 2016' :
-                      locale === 'mk' ? 'Од 2016 година' :
-                      'Since 2016'}
+                    {locale === 'sq' ? 'Që nga viti 2017' :
+                      locale === 'mk' ? 'Од 2017 година' :
+                      'Since 2017'}
                   </p>
                 </div>
               </div>
