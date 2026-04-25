@@ -3,6 +3,7 @@ import { Container } from '@/components/Container';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Button } from '@/components/Button';
 import { ContactForm } from '@/components/ContactForm';
+import { BlogPreview } from '@/components/BlogPreview';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/i18n';
 import { Scale, Shield, Users, BookOpen, Globe, Award } from 'lucide-react';
@@ -248,6 +249,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </Container>
       </section>
 
+      <BlogPreview locale={locale} translations={t} />
       <ContactForm translations={t} />
     </>
   );

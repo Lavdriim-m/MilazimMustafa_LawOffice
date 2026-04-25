@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Container } from '@/components/Container';
 import { Button } from '@/components/Button';
+import { BlogPreview } from '@/components/BlogPreview';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/i18n';
 import { GraduationCap, Briefcase, Award, Users } from 'lucide-react';
@@ -119,6 +120,8 @@ export default async function BiographyPage({ params }: { params: Promise<{ loca
           </div>
         </Container>
       </section>
+
+      <BlogPreview locale={locale} translations={t} />
     </>
   );
 }

@@ -1,280 +1,208 @@
-# Milazim Mustafa Law Office Website
+# Milazim Mustafa Law Office — Website
 
-A complete, polished, responsive, mobile-first multilingual law office website built with Next.js, TypeScript, and Tailwind CSS.
+A complete, polished, responsive, mobile-first multilingual law office website built with Next.js 16, TypeScript, Tailwind CSS, Sanity CMS, and Resend.
 
 ## Features
 
-- **Multilingual Support**: Albanian (sq), Macedonian (mk), and English (en)
-- **4 Core Pages**: Home, Services, About Us, Biography
-- **Responsive Design**: Mobile-first approach with elegant desktop layouts
-- **Professional Design**: Light, modern, premium feel suitable for a law office
-- **Contact Form**: Ready for integration with email services
-- **SEO-Friendly**: Proper metadata and semantic HTML structure
-- **Performance**: Optimized images and efficient Next.js App Router
+- **Multilingual**: Albanian (`sq` — default), Macedonian (`mk`), English (`en`) with locale-based routing
+- **5 Pages**: Home, Services, About, Biography, Blog
+- **Blog powered by Sanity CMS**: Embedded Studio at `/studio`, posts with rich text, images, and excerpts
+- **Blog Preview section**: Reusable component placed on every page (Home, Services, About, Biography) showing the latest 3 articles
+- **Contact form**: Server-side email delivery via Resend API to `avokat@milazimmustafi.com`
+- **Responsive**: Mobile-first, works from 320px to large desktops
+- **Deployed on Vercel** via GitHub integration
+
+---
 
 ## Project Structure
 
 ```
-project/
 ├── app/
-│   ├── [locale]/                 # Locale-based routing
-│   │   ├── layout.tsx            # Main layout with Header/Footer
-│   │   ├── page.tsx              # Home page
-│   │   ├── services/
-│   │   │   └── page.tsx          # Services page
-│   │   ├── about/
-│   │   │   └── page.tsx          # About Us page
-│   │   └── biography/
-│   │       └── page.tsx          # Biography page
-│   └── globals.css               # Global styles
+│   ├── [locale]/
+│   │   ├── layout.tsx           # Locale layout (Header, Footer, fonts)
+│   │   ├── page.tsx             # Home
+│   │   ├── services/page.tsx    # Services
+│   │   ├── about/page.tsx       # About Us
+│   │   ├── biography/page.tsx   # Biography
+│   │   └── blog/
+│   │       ├── page.tsx         # Blog index
+│   │       └── [slug]/page.tsx  # Single post
+│   ├── api/contact/route.ts     # Resend email API route
+│   └── studio/[[...tool]]/page.tsx  # Embedded Sanity Studio
 ├── components/
-│   ├── Header.tsx                # Sticky header with navigation
-│   ├── Footer.tsx                # Footer with contact info
-│   ├── LanguageSwitcher.tsx      # Language selection dropdown
-│   ├── MobileMenu.tsx            # Mobile hamburger menu
-│   ├── ContactForm.tsx           # Contact form component
-│   ├── Container.tsx             # Max-width container
-│   ├── Button.tsx                # Reusable button component
-│   └── SectionHeading.tsx        # Consistent section headings
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   ├── MobileMenu.tsx
+│   ├── LanguageSwitcher.tsx
+│   ├── ContactForm.tsx
+│   ├── BlogPreview.tsx          # Reusable blog teaser (used on all pages)
+│   ├── Container.tsx
+│   ├── Button.tsx
+│   └── SectionHeading.tsx
 ├── lib/
-│   ├── i18n.ts                   # i18n configuration
-│   └── translations/
-│       ├── index.ts              # Translation exports
-│       ├── sq.ts                 # Albanian translations (COMPLETE)
-│       ├── mk.ts                 # Macedonian translations (TODO)
-│       └── en.ts                 # English translations (TODO)
-├── public/
-│   ├── logo.svg                  # Law office logo
-│   └── portrait.jpeg             # Lawyer portrait
-└── middleware.ts                 # Locale routing middleware
+│   ├── i18n.ts
+│   ├── translations/
+│   │   ├── index.ts             # deepMerge logic
+│   │   ├── sq.ts                # Albanian — canonical/base (always complete)
+│   │   ├── mk.ts                # Macedonian — overrides only
+│   │   └── en.ts                # English — overrides only
+│   └── sanity/
+│       ├── client.ts            # Sanity client (next-sanity)
+│       ├── image.ts             # Image URL builder
+│       └── queries.ts           # GROQ queries
+├── sanity/
+│   └── schemaTypes/
+│       ├── post.ts              # Post document schema
+│       ├── blockContent.ts      # Rich text schema
+│       └── index.ts
+├── sanity.config.ts             # Sanity Studio configuration
+├── middleware.ts                # Locale redirect (excludes /api, /studio)
+└── .env.local                   # Local environment variables (gitignored)
 ```
+
+---
 
 ## Getting Started
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+### 1. Install dependencies
 
-2. **Run development server**:
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+```
 
-3. **Build for production**:
-   ```bash
-   npm run build
-   ```
+### 2. Configure environment variables
 
-4. **Start production server**:
-   ```bash
-   npm start
-   ```
+Copy the variables below into `.env.local`:
 
-The website will be available at `http://localhost:3000`, which will redirect to `http://localhost:3000/sq` (Albanian as default).
+```
+RESEND_API_KEY=re_...
+NEXT_PUBLIC_SANITY_PROJECT_ID=tmkmxkvs
+NEXT_PUBLIC_SANITY_DATASET=production
+```
+
+### 3. Run the development server
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:3000` — redirects to `/sq` (Albanian default).
+
+### 4. Access Sanity Studio locally
+
+Visit `http://localhost:3000/studio` and log in with your Sanity account.
+
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `RESEND_API_KEY` | Yes | Resend API key for contact form emails |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Yes | Sanity project ID |
+| `NEXT_PUBLIC_SANITY_DATASET` | Yes | Sanity dataset (usually `production`) |
+
+All three must also be added to **Vercel → Settings → Environment Variables**.
+
+---
+
+## Contact Form
+
+Handled by `app/api/contact/route.ts`. On submission:
+- Sends an email to `avokat@milazimmustafa.com` via Resend
+- Sets `Reply-To` to the visitor's email so the lawyer can reply directly
+- `from` address: `noreply@milazimmustafa.com`
+
+---
+
+## Blog (Sanity CMS)
+
+### Writing posts
+
+The lawyer logs into `https://milazimmustafi.com/studio` with his Sanity account (invited as Editor). From there he can:
+
+- Create, edit, and publish posts
+- Add a title, slug (auto-generated), main image with hotspot, excerpt, and rich body text
+- Posts appear on the site within 60 seconds (ISR revalidation)
+
+### Schema
+
+Defined in `sanity/schemaTypes/post.ts`:
+
+| Field | Type | Notes |
+|---|---|---|
+| `title` | string | Required |
+| `slug` | slug | Auto-generated from title |
+| `mainImage` | image | Supports hotspot/crop |
+| `publishedAt` | datetime | Controls order |
+| `excerpt` | text | Shown in cards and post hero |
+| `body` | blockContent | Rich text with H2, H3, quotes, lists, images, links |
+
+### CORS (required for Studio to work on production)
+
+In [sanity.io/manage](https://sanity.io/manage) → your project → API → CORS Origins, add:
+- `https://milazimmustafi.com`
+- `http://localhost:3000`
+
+---
 
 ## URL Structure
 
-The website uses locale-based routing:
+| Page | Albanian | Macedonian | English |
+|---|---|---|---|
+| Home | `/sq` | `/mk` | `/en` |
+| Services | `/sq/services` | `/mk/services` | `/en/services` |
+| About | `/sq/about` | `/mk/about` | `/en/about` |
+| Biography | `/sq/biography` | `/mk/biography` | `/en/biography` |
+| Blog | `/sq/blog` | `/mk/blog` | `/en/blog` |
+| Post | `/sq/blog/[slug]` | `/mk/blog/[slug]` | `/en/blog/[slug]` |
+| Studio | `/studio` | (no locale) | — |
 
-- **Albanian**: `/sq` (default)
-- **Macedonian**: `/mk`
-- **English**: `/en`
+---
 
-Examples:
-- Home: `/sq`, `/mk`, `/en`
-- Services: `/sq/services`, `/mk/services`, `/en/services`
-- About: `/sq/about`, `/mk/about`, `/en/about`
-- Biography: `/sq/biography`, `/mk/biography`, `/en/biography`
+## Translation System
 
+- `lib/translations/sq.ts` is the **canonical base** — must always be complete.
+- `mk.ts` and `en.ts` define only strings that differ from Albanian. They are deep-merged on top of `sq` at runtime.
+- Empty arrays in override files fall back to the Albanian base.
+- **Always add new keys to all three files** — `sq.ts` with real content, `mk.ts` and `en.ts` with at least placeholder strings.
 
-## Contact Form Integration
-
-The contact form is currently set up for frontend only. To integrate with a real email service:
-
-### Option 1: Formspree (Recommended for simplicity)
-
-1. Sign up at [formspree.io](https://formspree.io)
-2. Create a new form and get your form ID
-3. Open `/components/ContactForm.tsx`
-4. In the `handleSubmit` function, uncomment and update:
-   ```typescript
-   const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify(formState),
-   });
-
-   if (response.ok) {
-     setStatus('success');
-     setFormState({ name: '', email: '', phone: '', message: '' });
-   } else {
-     setStatus('error');
-   }
-   ```
-
-### Option 2: EmailJS
-
-1. Sign up at [emailjs.com](https://www.emailjs.com)
-2. Install the package: `npm install @emailjs/browser`
-3. Set up your email service and template
-4. In `/components/ContactForm.tsx`, import and use:
-   ```typescript
-   import emailjs from '@emailjs/browser';
-
-   await emailjs.send(
-     'YOUR_SERVICE_ID',
-     'YOUR_TEMPLATE_ID',
-     formState,
-     'YOUR_PUBLIC_KEY'
-   );
-   ```
-
-### Option 3: Next.js API Route
-
-1. Create `/app/api/contact/route.ts`:
-   ```typescript
-   import { NextResponse } from 'next/server';
-   import nodemailer from 'nodemailer';
-
-   export async function POST(request: Request) {
-     const body = await request.json();
-
-     // Configure your email transport
-     const transporter = nodemailer.createTransport({
-       // Your SMTP config
-     });
-
-     await transporter.sendMail({
-       from: body.email,
-       to: 'avokat@milazimmustafa.com',
-       subject: `Contact form: ${body.name}`,
-       text: body.message,
-     });
-
-     return NextResponse.json({ success: true });
-   }
-   ```
-
-2. Update `ContactForm.tsx`:
-   ```typescript
-   const response = await fetch('/api/contact', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify(formState),
-   });
-   ```
+---
 
 ## Design System
 
-### Colors
+| Element | Value |
+|---|---|
+| Heading font | Libre Baskerville (serif) — `--font-serif` |
+| Body font | Inter (sans-serif) — `--font-sans` |
+| Primary color | Slate (headings, nav) |
+| Accent color | Teal (CTAs, borders, icons) |
+| Background | Stone / warm white |
+| Section padding | `py-16 lg:py-24` |
+| Breakpoints | `md:` ≥ 768px, `lg:` ≥ 1024px |
 
-- **Primary**: Slate (headings, navigation)
-- **Accent**: Teal (CTAs, highlights)
-- **Background**: Stone/Warm whites
-- **Text**: Slate shades for hierarchy
+---
 
-### Typography
+## Commands
 
-- **Headings**: Libre Baskerville (serif, premium feel)
-- **Body**: Inter (sans-serif, highly readable)
-- **Hierarchy**: Consistent scale (text-4xl → text-3xl → text-2xl → text-xl → text-lg → text-base)
+```bash
+npm run dev        # Start dev server (http://localhost:3000)
+npm run build      # Production build
+npm run lint       # ESLint
+npm run typecheck  # TypeScript check without emit
+```
 
-### Spacing
-
-- Consistent 8px-based spacing system
-- Generous whitespace for professional feel
-- Section padding: `py-16 lg:py-24`
-
-### Responsive Breakpoints
-
-- Mobile: < 768px (default, mobile-first)
-- Tablet: ≥ 768px (`md:`)
-- Desktop: ≥ 1024px (`lg:`)
-
-## Asset Management
-
-### Logo
-Located at `/public/logo.svg` - used in header and footer.
-
-### Portrait Image
-Located at `/public/portrait.jpeg` - used on Home page, Biography page.
-
-To replace these assets:
-1. Keep the same filenames
-2. Place new files in `/public/` directory
-3. For best results:
-   - Logo: SVG format (scalable)
-   - Portrait: High-quality JPEG/PNG, minimum 800px wide
-
-## Browser Support
-
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-- Responsive down to 320px width
-
-## Performance Optimizations
-
-- Next.js Image component for optimized images
-- Font optimization with `next/font`
-- Static generation where possible
-- Lazy loading for below-fold content
+---
 
 ## Deployment
 
-This website is ready to deploy to:
+Deployed to **Vercel** via GitHub integration (auto-deploys on push to `main`).
 
-- **Vercel** (recommended for Next.js)
-- **Netlify** (configured with netlify.toml)
-- **Any hosting that supports Next.js**
+---
 
-### Environment Variables
+## Support
 
-No environment variables are required for the basic setup. If you add API integrations (contact form, analytics), add them to `.env.local`:
-
-```
-NEXT_PUBLIC_FORMSPREE_ID=your_id
-# or
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_key
-```
-
-## Maintenance
-
-### Adding New Content Sections
-
-1. Add translation strings to all three language files (`/lib/translations/*.ts`)
-2. Create or update page components in `/app/[locale]/`
-3. Follow existing patterns for consistency
-
-### Updating Contact Information
-
-Update in `/lib/translations/sq.ts` (and mk.ts, en.ts):
-```typescript
-contact: {
-  info: {
-    address: 'Your new address',
-    phone: 'Your new phone',
-    email: 'your@email.com',
-  },
-}
-```
-
-### Adding New Pages
-
-1. Create new page in `/app/[locale]/your-page/page.tsx`
-2. Add navigation link in translations
-3. Add route to Header and Footer components
-
-## Support & Contact
-
-For questions or support regarding this website:
-
-- **Email**: lavdrim.mustafi03@gmail.com
-- **Phone**: +389 71 760 068
+- **Developer**: lavdrim.mustafi03@gmail.com / +389 71 760 068
 - **Website**: www.milazimmustafa.com
-
-## License
 
 © 2026 Milazim Mustafa. All rights reserved.

@@ -209,6 +209,9 @@ export const en = {
     readMore: 'Read More',
     backToBlog: 'Back to Blog',
     noPosts: 'No articles have been published yet. Check back soon.',
+    previewTitle: 'From Our Blog',
+    previewSubtitle: 'Legal analysis and insights from our office',
+    viewAll: 'View All Articles',
   },
   footer: {
     description: 'Milazim Mustafa Law Office – Trustworthy and dignified, professional legal services.',

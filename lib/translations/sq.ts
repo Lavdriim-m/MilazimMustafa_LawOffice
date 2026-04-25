@@ -209,6 +209,9 @@ export const sq = {
     readMore: 'Lexo Më Shumë',
     backToBlog: 'Kthehu te Blogu',
     noPosts: 'Asnjë artikull nuk është publikuar ende. Kthehuni së shpejti.',
+    previewTitle: 'Nga Blogu Ynë',
+    previewSubtitle: 'Analiza dhe njohuri juridike nga zyra jonë',
+    viewAll: 'Shiko Të Gjitha Artikujt',
   },
   footer: {
     description: 'Studio Ligjore Milazim Mustafa – Besueshmëri dhe shërbime juridike dinjitoze dhe profesionale.',
