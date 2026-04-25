@@ -23,32 +23,25 @@ export function ContactForm({ translations }: ContactFormProps) {
     e.preventDefault();
     setStatus('sending');
 
-    // TODO: Integrate with Formspree, EmailJS, or Next.js API route
-    // Example integration point:
-    //
-    // Option 1: Formspree
-    // const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(formState),
-    // });
-    //
-    // Option 2: EmailJS
-    // await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formState, 'YOUR_PUBLIC_KEY');
-    //
-    // Option 3: Next.js API Route
-    // const response = await fetch('/api/contact', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(formState),
-    // });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
 
-    // Simulated submission for now
-    setTimeout(() => {
-      setStatus('success');
-      setFormState({ name: '', email: '', phone: '', message: '' });
-      setTimeout(() => setStatus('idle'), 3000);
-    }, 1000);
+      if (response.ok) {
+        setStatus('success');
+        setFormState({ name: '', email: '', phone: '', message: '' });
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 4000);
+      }
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   const handleChange = (
