@@ -156,23 +156,23 @@ export default async function BlogPostPage({
         </Container>
       </section>
 
-      {/* Main image */}
-      {post.mainImage && (
-        <div className="relative aspect-[21/9] max-h-[500px] overflow-hidden">
-          <Image
-            src={urlFor(post.mainImage).width(1600).url()}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-      )}
-
       {/* Article body */}
       <section className="py-16 lg:py-24 bg-white">
         <Container>
           <div className="max-w-3xl mx-auto">
+            {/* Main image — constrained to content width */}
+            {post.mainImage && (
+              <div className="relative aspect-video overflow-hidden mb-12 shadow-md">
+                <Image
+                  src={urlFor(post.mainImage).width(1200).height(675).fit('crop').crop('focalpoint').url()}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+
             {post.body && (
               <div className="text-base lg:text-lg">
                 <PortableText value={post.body} components={portableTextComponents} />
