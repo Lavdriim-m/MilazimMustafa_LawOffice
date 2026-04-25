@@ -20,6 +20,7 @@ export function MobileMenu({ locale, translations }: MobileMenuProps) {
     { href: `/${locale}/services`, label: translations.nav.services },
     { href: `/${locale}/about`, label: translations.nav.about },
     { href: `/${locale}/biography`, label: translations.nav.biography },
+    { href: `/${locale}/blog`, label: translations.nav.blog },
   ];
 
   return (

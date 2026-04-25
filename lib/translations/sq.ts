@@ -6,6 +6,7 @@ export const sq = {
     services: 'Shërbimet Tona',
     about: 'Rreth Nesh',
     biography: 'Biografia',
+    blog: 'Blogu',
     contact: 'Kontakti',
   },
   hero: {
@@ -200,6 +201,14 @@ export const sq = {
       saturday: 'E Shtunë: Me rezervim paraprak',
       sunday: 'E Diel: Mbyllur',
     },
+  },
+  blog: {
+    eyebrow: 'Blogu Juridik',
+    title: 'Artikuj dhe Njohuri Juridike',
+    subtitle: 'Analiza, komente dhe udhëzime praktike mbi çështjet juridike nga Zyra e Avokatisë Milazim Mustafa.',
+    readMore: 'Lexo Më Shumë',
+    backToBlog: 'Kthehu te Blogu',
+    noPosts: 'Asnjë artikull nuk është publikuar ende. Kthehuni së shpejti.',
   },
   footer: {
     description: 'Studio Ligjore Milazim Mustafa – Besueshmëri dhe shërbime juridike dinjitoze dhe profesionale.',

@@ -6,6 +6,7 @@ export const en = {
     services: 'Our Services',
     about: 'About Us',
     biography: 'Biography',
+    blog: 'Blog',
     contact: 'Contact',
   },
   hero: {
@@ -200,6 +201,14 @@ export const en = {
       saturday: 'Saturday: By prior appointment',
       sunday: 'Sunday: Closed',
     },
+  },
+  blog: {
+    eyebrow: 'Legal Blog',
+    title: 'Articles & Legal Insights',
+    subtitle: 'Analysis, commentary, and practical guidance on legal matters from Milazim Mustafa Law Office.',
+    readMore: 'Read More',
+    backToBlog: 'Back to Blog',
+    noPosts: 'No articles have been published yet. Check back soon.',
   },
   footer: {
     description: 'Milazim Mustafa Law Office – Trustworthy and dignified, professional legal services.',
